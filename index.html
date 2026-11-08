@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Envío de Currículum Vítae</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            background: #ffffff;
+            padding: 30px;
+            margin: auto;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #333;
+            border-bottom: 2px solid #0056b3;
+            padding-bottom: 5px;
+            margin-top: 30px;
+        }
+        fieldset {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        legend {
+            font-weight: bold;
+            color: #0056b3;
+            padding: 0 10px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+            display: flex;
+            flex-direction: column;
+        }
+        .form-row {
+            display: flex;
+            gap: 15px;
+        }
+        .form-row .form-group {
+            flex: 1;
+        }
+        label {
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+        input, select, textarea {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        input:focus, select:focus, textarea:focus {
+            border-color: #0056b3;
+            outline: none;
+        }
+        button {
+            background-color: #0056b3;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #004494;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1 style="text-align: center; color: #0056b3;">Bolsa de Trabajo - Currículum Vítae</h1>
+    
+    <form action="enviacurriculo.htm" method="POST" enctype="multipart/form-data">
+        
+        <!-- DATOS PERSONALES -->
+        <fieldset>
+            <legend>Datos Personales</legend>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                </div>
+                <div class="form-group">
+                    <label for="apellidos">Apellidos:</label>
+                    <input type="text" id="apellidos" name="apellidos" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="dni">DNI:</label>
+                    <input type="text" id="dni" name="dni" pattern="[0-9]{8}" title="Debe ingresar 8 dígitos numéricos" required>
+                </div>
+                <div class="form-group">
+                    <label for="fecha_nacimiento">Fecha De Nacimiento:</label>
+                    <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="foto">Fotografía:</label>
+                <input type="file" id="foto" name="foto" accept="image/png, image/jpeg">
+            </div>
+
+            <div class="form-group">
+                <label for="direccion">Dirección:</label>
+                <input type="text" id="direccion" name="direccion" required>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="localidad">Localidad:</label>
+                    <input type="text" id="localidad" name="localidad" required>
+                </div>
+                <div class="form-group">
+                    <label for="provincia">Provincia:</label>
+                    <input type="text" id="provincia" name="provincia" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="telefono">Teléfono Fijo:</label>
+                    <input type="tel" id="telefono" name="telefono">
+                </div>
+                <div class="form-group">
+                    <label for="telefono_movil">Teléfono Móvil:</label>
+                    <input type="tel" id="telefono_movil" name="telefono_movil" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="email">E-Mail:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+        </fieldset>
+
+        <!-- FORMACION Y ESTUDIOS -->
+        <fieldset>
+            <legend>Formación y Estudios</legend>
+            
+            <div class="form-group">
+                <label for="titulacion">Titulación:</label>
+                <input type="text" id="titulacion" name="titulacion" placeholder="Ej. Ingeniería de Sistemas, Licenciatura, etc.">
+            </div>
+
+            <div class="form-group">
+                <label for="idiomas">Idiomas:</label>
+                <textarea id="idiomas" name="idiomas" rows="2" placeholder="Ej. Inglés (Avanzado), Francés (Básico)"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="informatica">Conocimientos Informáticos:</label>
+                <textarea id="informatica" name="informatica" rows="2" placeholder="Ej. Java, Python, HTML5, Bases de Datos"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="cursos">Cursos y Seminarios:</label>
+                <textarea id="cursos" name="cursos" rows="3" placeholder="Indique nombre, lugar y año de los cursos realizados"></textarea>
+            </div>
+        </fieldset>
+
+        <!-- EXPERIENCIA PROFESIONAL -->
+        <fieldset>
+            <legend>Experiencia Profesional</legend>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="empresa">Empresa:</label>
+                    <input type="text" id="empresa" name="empresa">
+                </div>
+                <div class="form-group">
+                    <label for="fecha_exp">Fecha (Periodo):</label>
+                    <input type="text" id="fecha_exp" name="fecha_exp" placeholder="Ej. 2023 - 2025">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="puesto">Puesto / Actividad desarrollada:</label>
+                <textarea id="puesto" name="puesto" rows="3" placeholder="Describa brevemente sus funciones y logros"></textarea>
+            </div>
+        </fieldset>
+
+        <!-- DATOS COMPLEMENTARIOS -->
+        <fieldset>
+            <legend>Datos Complementarios</legend>
+            <div class="form-group">
+                <label for="complementarios">Información adicional (Opcional):</label>
+                <textarea id="complementarios" name="complementarios" rows="3" placeholder="Otros datos de interés, disponibilidad, carnet de conducir, etc."></textarea>
+            </div>
+            <p style="font-size: 12px; color: #666; font-style: italic;">
+                * Todo lo expuesto anteriormente podrá ser acreditado, en caso de solicitud.
+            </p>
+        </fieldset>
+
+        <button type="submit">Enviar Currículum</button>
+    </form>
+</div>
+
+</body>
+</html>
